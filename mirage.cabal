@@ -1,0 +1,89 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           mirage
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/Github username here/mirage#readme>
+homepage:       https://github.com/Github username here/mirage#readme
+bug-reports:    https://github.com/Github username here/mirage/issues
+author:         Author name here
+maintainer:     Author email here
+copyright:      2019 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/Github username here/mirage
+
+library
+  exposed-modules:
+      Cmd.CmdLine
+      Cmd.Init
+      Config.Sample
+      Config.Yaml
+      Lib
+  other-modules:
+      Paths_mirage
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , cmdargs
+    , directory
+    , filepath
+    , raw-strings-qq
+    , text
+    , unix
+    , yaml
+  default-language: Haskell2010
+
+executable mirage-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_mirage
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , cmdargs
+    , directory
+    , filepath
+    , mirage
+    , raw-strings-qq
+    , text
+    , unix
+    , yaml
+  default-language: Haskell2010
+
+test-suite mirage-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_mirage
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , cmdargs
+    , directory
+    , filepath
+    , mirage
+    , raw-strings-qq
+    , text
+    , unix
+    , yaml
+  default-language: Haskell2010
