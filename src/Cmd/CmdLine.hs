@@ -7,16 +7,17 @@ module Cmd.CmdLine
   )
 where
 
-import System.Console.CmdArgs.Implicit hiding (args)
+import System.Console.CmdArgs.Implicit
 import qualified System.Environment as E
+import System.FilePath.Posix
 import Prelude hiding (init)
 
 data Cmd
   = Sync
       { configFile :: FilePath
       }
-  | Init {}
-  | Prune {}
+  | Init
+  | Prune
   deriving (Data, Typeable, Show)
 
 configFileName :: String
@@ -25,17 +26,22 @@ configFileName = "mirage-config.yml"
 sync :: Cmd
 sync =
   Sync
-    { configFile = "./" ++ configFileName
+    { configFile = "." </> configFileName &= name "config"
     }
 
 init :: Cmd
-init = Init {}
+init = Init &= help "generate configuration file"
 
 prune :: Cmd
-prune = Prune {}
+prune = Prune
 
-cmdLineMode :: Mode (CmdArgs Cmd)
-cmdLineMode = cmdArgsMode $ modes [sync &= auto, prune, init]
+cmdLineMode :: Cmd
+cmdLineMode =
+  modes
+    [ sync &= auto,
+      init,
+      prune
+    ]
 
 getCmdLine :: [String] -> IO Cmd
-getCmdLine args = E.withArgs args $ cmdArgsRun cmdLineMode
+getCmdLine = flip E.withArgs $ cmdArgs cmdLineMode
