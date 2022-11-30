@@ -29,6 +29,7 @@ dependencies:
 - raw-strings-qq
 - filepath
 - directory
+- gitlib >= 3.1
 
 ghc-options:
 - -Wall
