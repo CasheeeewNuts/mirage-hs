@@ -13,4 +13,4 @@ main = do
   case cmd of
     Init -> D.getWorkingDirectory >>= Cmd.Init.init
     Prune -> return ()
-    Sync _ -> Cmd.Sync.sync [("./", ())]
+    Sync _ -> Cmd.Sync.sync [("node_modules", ())]

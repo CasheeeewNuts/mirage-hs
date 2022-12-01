@@ -13,4 +13,6 @@ init wd = do
 
   if fileExists
     then return ()
-    else writeFile filePath sample
+    else writeFile filePath sample >> createStore
+  where
+    createStore = createDirectory ".mirage"

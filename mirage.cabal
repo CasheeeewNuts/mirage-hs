@@ -42,7 +42,7 @@ library
     , cmdargs
     , directory
     , filepath
-    , gitlib >=3.1
+    , process
     , raw-strings-qq
     , text
     , unix
@@ -62,8 +62,8 @@ executable mirage-exe
     , cmdargs
     , directory
     , filepath
-    , gitlib >=3.1
     , mirage
+    , process
     , raw-strings-qq
     , text
     , unix
@@ -84,8 +84,8 @@ test-suite mirage-test
     , cmdargs
     , directory
     , filepath
-    , gitlib >=3.1
     , mirage
+    , process
     , raw-strings-qq
     , text
     , unix
